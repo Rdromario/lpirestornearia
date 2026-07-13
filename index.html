@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIRES Montagens Industriais — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0a2138;
+    --navy-mid:#0f3357;
+    --blue-steel:#1f6fb2;
+    --blue-bright:#3a9ee0;
+    --lime:#8dc63f;
+    --lime-dark:#6ea832;
+    --ink:#151b22;
+    --paper:#eef1f4;
+    --paper-2:#e2e7ec;
+    --white:#ffffff;
+    --gray-mid:#5c6773;
+    --gray-line:#c9d2da;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:0.02em;}
+  .mono{font-family:'Roboto Mono',monospace;}
+  a{text-decoration:none;color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'Roboto Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--lime-dark);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);display:inline-block;}
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,33,56,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{height:42px;width:auto;}
+  .brand-text{font-family:'Oswald',sans-serif;color:var(--white);font-size:15px;letter-spacing:0.08em;line-height:1.2;}
+  .brand-text span{display:block;font-family:'Roboto Mono',monospace;font-size:9.5px;color:var(--lime);letter-spacing:0.16em;margin-top:2px;}
+  .nav-links{display:flex;gap:34px;}
+  .nav-links a{
+    font-family:'Roboto Mono',monospace;
+    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    color:rgba(255,255,255,0.75);
+    position:relative;padding-bottom:4px;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--lime);}
+  .nav-cta{
+    background:var(--lime);color:var(--navy-deep)!important;
+    padding:10px 20px;border-radius:2px;
+    font-weight:700;letter-spacing:0.06em;
+  }
+  .nav-cta:hover{background:var(--lime-dark);}
+  @media (max-width:900px){ .nav-links{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:linear-gradient(115deg, var(--navy-deep) 42%, var(--navy-mid) 100%);
+    overflow:hidden;
+    padding-top:76px;
+  }
+  .hero-img{
+    position:absolute;right:-4%;top:0;bottom:0;width:52%;
+    clip-path:polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+    opacity:0.9;
+  }
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg, var(--navy-deep) 0%, rgba(10,33,56,0.15) 40%, rgba(10,33,56,0.05) 100%);
+  }
+  .hero-content{position:relative;z-index:2;max-width:640px;padding:60px 0;}
+  .hero-content .eyebrow{color:var(--lime);}
+  .hero-content .eyebrow::before{background:var(--lime);}
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(38px,5.2vw,64px);
+    line-height:1.04;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--lime);}
+  .hero p.lead{
+    color:rgba(255,255,255,0.78);
+    font-size:17px;line-height:1.65;
+    max-width:520px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:52px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 28px;font-family:'Roboto Mono',monospace;
+    font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;
+    border-radius:2px;transition:all .2s;
+  }
+  .btn-primary{background:var(--lime);color:var(--navy-deep);}
+  .btn-primary:hover{background:var(--lime-dark);transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.35);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--lime);color:var(--lime);}
+
+  .hero-stats{
+    display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.15);
+    max-width:560px;
+  }
+  .hero-stats div{padding:20px 30px 0 0;flex:1;}
+  .hero-stats strong{
+    display:block;font-family:'Oswald',sans-serif;color:var(--lime);
+    font-size:32px;font-weight:600;
+  }
+  .hero-stats span{
+    font-family:'Roboto Mono',monospace;font-size:10.5px;
+    color:rgba(255,255,255,0.6);letter-spacing:0.06em;text-transform:uppercase;
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:110px 0;position:relative;}
+  .section-head{max-width:660px;margin-bottom:60px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,42px);color:var(--navy-deep);font-weight:600;line-height:1.1;}
+  .section-head p{color:var(--gray-mid);font-size:16px;line-height:1.6;margin-top:16px;}
+
+  .cut-divider{
+    height:64px;background:var(--navy-deep);
+    clip-path:polygon(0 0,100% 40%,100% 100%,0 100%);
+    margin-top:-1px;
+  }
+
+  /* ===== SOBRE ===== */
+  #sobre{background:var(--white);}
+  .sobre-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:70px;align-items:center;}
+  .sobre-grid p{color:var(--gray-mid);font-size:16px;line-height:1.75;margin-bottom:16px;}
+  .sobre-img{position:relative;}
+  .sobre-img .frame{
+    position:relative;border:2px solid var(--lime);
+    padding:14px;transform:translate(10px,-10px);
+  }
+  .sobre-img img{width:100%;height:380px;object-fit:cover;}
+  @media (max-width:860px){ .sobre-grid{grid-template-columns:1fr;} }
+
+  /* ===== SERVICOS (TABS) ===== */
+  #servicos{background:var(--paper);}
+  .tabs-nav{
+    display:flex;flex-wrap:wrap;gap:2px;margin-bottom:0;
+    border-bottom:2px solid var(--gray-line);
+  }
+  .tab-btn{
+    font-family:'Roboto Mono',monospace;
+    font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;
+    padding:16px 24px;color:var(--gray-mid);background:transparent;
+    border:none;cursor:pointer;position:relative;font-weight:500;
+    transition:color .2s;
+  }
+  .tab-btn::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;
+    background:var(--lime);transform:scaleX(0);transition:transform .25s;
+  }
+  .tab-btn.active{color:var(--navy-deep);font-weight:700;}
+  .tab-btn.active::after{transform:scaleX(1);}
+  .tab-btn:hover{color:var(--navy-deep);}
+
+  .tab-panel{display:none;padding-top:52px;}
+  .tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;animation:fadeIn .4s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .tab-text .tab-tag{
+    font-family:'Roboto Mono',monospace;font-size:11px;color:var(--lime-dark);
+    letter-spacing:0.12em;margin-bottom:10px;display:block;
+  }
+  .tab-text h3{font-size:28px;color:var(--navy-deep);margin-bottom:16px;font-weight:600;}
+  .tab-text p{color:var(--gray-mid);font-size:15.5px;line-height:1.7;margin-bottom:14px;}
+  .tab-text ul{list-style:none;margin-top:18px;}
+  .tab-text li{
+    font-size:14.5px;color:var(--ink);padding:9px 0 9px 22px;
+    border-top:1px solid var(--gray-line);position:relative;
+  }
+  .tab-text li::before{
+    content:"";position:absolute;left:0;top:16px;width:9px;height:9px;
+    background:var(--lime);
+  }
+  .tab-img{position:relative;}
+  .tab-img .plate{
+    position:absolute;bottom:-16px;left:-16px;background:var(--navy-deep);color:var(--white);
+    padding:10px 18px;font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:0.08em;
+  }
+  .tab-img-box{overflow:hidden;background:#dfe4e8;height:400px;position:relative;}
+  .tab-img-box img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .tab-img-box:hover img{transform:scale(1.05);}
+  .img-fallback{
+    width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(135deg,#dfe4e8,#dfe4e8 12px,#d3d9de 12px,#d3d9de 24px);
+    color:var(--gray-mid);font-family:'Roboto Mono',monospace;font-size:12px;text-align:center;gap:6px;
+  }
+  @media (max-width:860px){ .tab-panel.active{grid-template-columns:1fr;} .tab-img-box{height:280px;} }
+
+  /* ===== GALERIA ===== */
+  #galeria{background:var(--white);}
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:8px;
+  }
+  .gallery-grid .g-item:nth-child(5n+1){grid-column:span 2;grid-row:span 2;}
+  .g-item{position:relative;overflow:hidden;background:#dfe4e8;cursor:pointer;}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .45s;}
+  .g-item:hover img{transform:scale(1.08);}
+  .g-item .g-label{
+    position:absolute;bottom:0;left:0;right:0;padding:10px 12px;
+    background:linear-gradient(to top, rgba(10,33,56,0.85), transparent);
+    color:var(--white);font-family:'Roboto Mono',monospace;font-size:10.5px;
+    opacity:0;transition:opacity .25s;letter-spacing:0.06em;
+  }
+  .g-item:hover .g-label{opacity:1;}
+  @media (max-width:800px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .gallery-grid .g-item:nth-child(5n+1){grid-column:span 1;grid-row:span 1;} }
+
+  /* ===== DIFERENCIAIS ===== */
+  #diferenciais{background:var(--navy-deep);color:var(--white);}
+  #diferenciais .section-head h2{color:var(--white);}
+  #diferenciais .section-head p{color:rgba(255,255,255,0.65);}
+  .dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.12);}
+  .dif-card{background:var(--navy-deep);padding:36px 26px;}
+  .dif-card .ic{
+    width:44px;height:44px;border:1.5px solid var(--lime);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+    color:var(--lime);font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;
+  }
+  .dif-card h4{font-size:16px;margin-bottom:10px;color:var(--white);font-weight:600;}
+  .dif-card p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;}
+  @media (max-width:900px){ .dif-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .dif-grid{grid-template-columns:1fr;} }
+
+  /* ===== MVV ===== */
+  #mvv{background:var(--paper);}
+  .mvv-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gray-line);margin-bottom:2px;}
+  .mvv-card{background:var(--white);padding:44px 40px;}
+  .mvv-card h3{font-size:13px;letter-spacing:0.14em;color:var(--lime-dark);margin-bottom:16px;font-family:'Roboto Mono',monospace;}
+  .mvv-card p{font-size:16px;line-height:1.7;color:var(--ink);}
+  .valores-wrap{background:var(--white);padding:44px 40px;margin-top:2px;}
+  .valores-wrap h3{font-size:13px;letter-spacing:0.14em;color:var(--lime-dark);margin-bottom:20px;font-family:'Roboto Mono',monospace;}
+  .valores-pills{display:flex;flex-wrap:wrap;gap:10px;}
+  .valores-pills span{
+    font-family:'Roboto Mono',monospace;font-size:12.5px;
+    border:1px solid var(--gray-line);padding:9px 16px;color:var(--ink);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .valores-pills span::before{content:"";width:6px;height:6px;background:var(--lime);display:inline-block;}
+  @media (max-width:800px){ .mvv-grid{grid-template-columns:1fr;} }
+
+  /* ===== CLIENTES ===== */
+  #clientes{background:var(--white);}
+  .clientes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .client-plate{
+    border:1.5px solid var(--navy-deep);padding:24px 20px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    min-height:96px;position:relative;
+  }
+  .client-plate::before{
+    content:"";position:absolute;top:6px;left:6px;width:6px;height:6px;border:1px solid var(--gray-mid);border-radius:50%;
+  }
+  .client-plate::after{
+    content:"";position:absolute;bottom:6px;right:6px;width:6px;height:6px;border:1px solid var(--gray-mid);border-radius:50%;
+  }
+  .client-plate span{
+    font-family:'Roboto Mono',monospace;font-size:13px;letter-spacing:0.05em;
+    color:var(--navy-deep);font-weight:700;text-transform:uppercase;line-height:1.3;
+  }
+  @media (max-width:800px){ .clientes-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:500px){ .clientes-grid{grid-template-columns:1fr;} }
+
+  /* ===== CONTATO / FOOTER ===== */
+  #contato{
+    background:var(--navy-deep);color:var(--white);
+    padding-top:90px;padding-bottom:0;
+  }
+  .contato-inner{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:60px;padding-bottom:80px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  #contato h2{color:var(--white);font-size:clamp(28px,3.6vw,44px);line-height:1.1;margin-bottom:20px;}
+  #contato .lead{color:rgba(255,255,255,0.65);font-size:16px;line-height:1.7;max-width:480px;margin-bottom:30px;}
+  .contact-list{display:flex;flex-direction:column;gap:18px;}
+  .contact-list div{border-top:1px solid rgba(255,255,255,0.12);padding-top:14px;}
+  .contact-list .lbl{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--lime);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+  .contact-list .val{font-size:16px;color:var(--white);}
+  .footer-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 0;font-family:'Roboto Mono',monospace;font-size:11.5px;color:rgba(255,255,255,0.45);
+    flex-wrap:wrap;gap:10px;
+  }
+
+  /* placeholder note for editor */
+  .edit-note{color:#ffd966!important;}
+
+  ::selection{background:var(--lime);color:var(--navy-deep);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <img src="logo.jpg" alt="PIRES Montagens Industriais">
+      <div class="brand-text">PIRES<span>MONTAGENS INDUSTRIAIS</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="topo">
+  <div class="hero-img"><img src="img1.jpg" alt="Corte a laser CNC PIRES"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow">Usinagem · Soldagem · Corte a Laser CNC</div>
+      <h1>Precisão industrial<br>que atravessa a <em>fronteira</em></h1>
+      <p class="lead">Há mais de 10 anos transformando aço em soluções para a indústria pesada do Brasil e do Paraguai — da tornearia de precisão ao corte a laser CNC.</p>
+      <div class="hero-ctas">
+        <a href="#servicos" class="btn btn-primary">Ver serviços</a>
+        <a href="#contato" class="btn btn-ghost">Solicitar orçamento</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>10+</strong><span>Anos de mercado</span></div>
+        <div><strong>9</strong><span>Grandes indústrias atendidas</span></div>
+        <div><strong>2</strong><span>Países — BR &amp; PY</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre">
+  <div class="wrap sobre-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--lime-dark)">Quem somos</div>
+      <h2 style="color:var(--navy-deep);font-size:clamp(26px,3vw,36px);font-weight:600;margin-bottom:22px;">Uma referência em montagens e serviços industriais</h2>
+      <p>A PIRES Montagens Industriais atua há mais de 10 anos entregando soluções completas em usinagem, tornearia, soldagem — incluindo solda em alumínio —, metalúrgica industrial e corte a laser CNC.</p>
+      <p>Atendemos empresas de grande porte no Brasil e no Paraguai, com estrutura, equipamentos e uma equipe técnica preparada para projetos de alta exigência, prazos apertados e padrões rígidos de qualidade.</p>
+      <p>Nossa trajetória foi construída ao lado de indústrias que não abrem mão de precisão — e é essa mesma exigência que aplicamos em cada peça que sai do nosso chão de fábrica.</p>
+    </div>
+    <div class="sobre-img">
+      <div class="frame">
+        <img src="img2.jpg" alt="Estrutura industrial PIRES" onerror="this.parentElement.parentElement.querySelector('.frame')?.classList.add('ph'); this.replaceWith(Object.assign(document.createElement('div'),{className:'img-fallback',style:'height:380px',innerHTML:'ADICIONE<br>img2.jpg'}))">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cut-divider"></div>
+
+<!-- ===== SERVICOS ===== -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">O que fazemos</div>
+      <h2>Serviços</h2>
+      <p>Da matéria-prima à peça finalizada — cada etapa do processo executada internamente, com controle total de qualidade e prazo.</p>
+    </div>
+
+    <div class="tabs-nav" id="tabsNav">
+      <button class="tab-btn active" data-tab="tornearia">Tornearia</button>
+      <button class="tab-btn" data-tab="soldagem">Soldagem</button>
+      <button class="tab-btn" data-tab="aluminio">Solda em Alumínio</button>
+      <button class="tab-btn" data-tab="metalurgica">Metalúrgica Industrial</button>
+      <button class="tab-btn" data-tab="laser">Corte a Laser CNC</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="tornearia">
+      <div class="tab-text">
+        <span class="tab-tag">01 · USINAGEM DE PRECISÃO</span>
+        <h3>Tornearia em geral</h3>
+        <p>Fabricação e recuperação de peças torneadas com precisão dimensional para linhas de produção que não podem parar. Trabalhamos com diferentes ligas metálicas, atendendo desde a manutenção corretiva até a fabricação de componentes sob desenho técnico.</p>
+        <ul>
+          <li>Fabricação de eixos, buchas e componentes rotativos</li>
+          <li>Recuperação de peças desgastadas</li>
+          <li>Usinagem sob desenho e engenharia reversa</li>
+        </ul>
+      </div>
+      <div class="tab-img">
+        <div class="tab-img-box"><img src="img3.jpg" alt="Tornearia PIRES" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'img-fallback',innerHTML:'ADICIONE<br>img3.jpg'}))"></div>
+        <div class="plate">TORNEARIA · PIRES</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="soldagem">
+      <div class="tab-text">
+        <span class="tab-tag">02 · UNIÃO ESTRUTURAL</span>
+        <h3>Soldagem industrial</h3>
+        <p>Soldagem estrutural e de manutenção para estruturas metálicas, esteiras, silos e equipamentos industriais, seguindo normas técnicas de segurança e resistência exigidas por operações de grande porte.</p>
+        <ul>
+          <li>Solda estrutural em aço carbono e inox</li>
+          <li>Manutenção e reforço de estruturas metálicas</li>
+          <li>Montagens industriais completas in loco</li>
+        </ul>
+      </div>
+      <div class="tab-img">
+        <div class="tab-img-box"><img src="img4.jpg" alt="Soldagem industrial PIRES" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'img-fallback',innerHTML:'ADICIONE<br>img4.jpg'}))"></div>
+        <div class="plate">SOLDAGEM · PIRES</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="aluminio">
+      <div class="tab-text">
+        <span class="tab-tag">03 · LIGAS LEVES</span>
+        <h3>Solda em alumínio</h3>
+        <p>Processo especializado para soldagem de alumínio e ligas leves, exigindo controle térmico e técnica apurada para garantir resistência sem comprometer a integridade do material — aplicado em equipamentos, tanques e estruturas específicas.</p>
+        <ul>
+          <li>Soldagem TIG especializada em alumínio</li>
+          <li>Fabricação e reparo de peças em ligas leves</li>
+          <li>Acabamento técnico para uso industrial</li>
+        </ul>
+      </div>
+      <div class="tab-img">
+        <div class="tab-img-box"><img src="img5.jpg" alt="Solda em alumínio PIRES" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'img-fallback',innerHTML:'ADICIONE<br>img5.jpg'}))"></div>
+        <div class="plate">ALUMÍNIO · PIRES</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="metalurgica">
+      <div class="tab-text">
+        <span class="tab-tag">04 · ESTRUTURAS &amp; PROJETOS</span>
+        <h3>Metalúrgica industrial</h3>
+        <p>Projetos completos de metalúrgica industrial, do desenvolvimento à entrega: estruturas metálicas, suportes, plataformas e equipamentos sob medida para operações agroindustriais, frigoríficas e de mineração.</p>
+        <ul>
+          <li>Estruturas metálicas sob projeto</li>
+          <li>Fabricação de equipamentos industriais</li>
+          <li>Atendimento técnico especializado por segmento</li>
+        </ul>
+      </div>
+      <div class="tab-img">
+        <div class="tab-img-box"><img src="img6.jpg" alt="Metalúrgica industrial PIRES" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'img-fallback',innerHTML:'ADICIONE<br>img6.jpg'}))"></div>
+        <div class="plate">METALÚRGICA · PIRES</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="laser">
+      <div class="tab-text">
+        <span class="tab-tag">05 · CORTE DE ALTA PRECISÃO</span>
+        <h3>Corte a laser CNC</h3>
+        <p>Tecnologia CNC de corte a laser para peças com alta exigência de precisão e repetibilidade, direto a partir de arquivo técnico — reduzindo desperdício de material e tempo de fabricação em escala industrial.</p>
+        <ul>
+          <li>Corte de chapas metálicas a partir de projeto técnico</li>
+          <li>Alta precisão e repetibilidade dimensional</li>
+          <li>Produção ágil para grandes volumes</li>
+        </ul>
+      </div>
+      <div class="tab-img">
+        <div class="tab-img-box"><img src="img1.jpg" alt="Corte a laser CNC PIRES"></div>
+        <div class="plate">CORTE A LASER · PIRES</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== GALERIA ===== -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Nosso trabalho</div>
+      <h2>Galeria de projetos</h2>
+      <p>Um retrato do chão de fábrica: máquinas, processos e peças que já saíram daqui para operar em grandes indústrias.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIAIS ===== -->
+<section id="diferenciais">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--lime)">Por que a PIRES</div>
+      <h2>Diferenciais</h2>
+      <p>O que sustenta uma década de contratos com indústrias que não abrem mão de qualidade.</p>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="ic">10+</div>
+        <h4>Experiência consolidada</h4>
+        <p>Mais de uma década atendendo indústrias de grande porte com regularidade e confiança.</p>
+      </div>
+      <div class="dif-card">
+        <div class="ic">BR/PY</div>
+        <h4>Atuação internacional</h4>
+        <p>Estrutura preparada para atender empresas no Brasil e no Paraguai.</p>
+      </div>
+      <div class="dif-card">
+        <div class="ic">⏱</div>
+        <h4>Compromisso com prazos</h4>
+        <p>Planejamento de produção que respeita o cronograma de operações que não podem parar.</p>
+      </div>
+      <div class="dif-card">
+        <div class="ic">✓</div>
+        <h4>Qualidade técnica</h4>
+        <p>Processos padronizados e equipe especializada em cada etapa da fabricação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISSAO / VISAO / VALORES ===== -->
+<section id="mvv">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Nossos princípios</div>
+      <h2>Missão, visão e valores</h2>
+    </div>
+    <div class="mvv-grid">
+      <div class="mvv-card">
+        <h3>MISSÃO</h3>
+        <p>Oferecer soluções industriais com excelência em usinagem, tornearia, soldagem e corte a laser CNC, entregando qualidade, precisão e agilidade para atender às necessidades de cada cliente, contribuindo para o desenvolvimento da indústria no Brasil e Paraguai.</p>
+      </div>
+      <div class="mvv-card">
+        <h3>VISÃO</h3>
+        <p>Ser reconhecida como uma das principais empresas de montagens e serviços industriais da região, destacando-se pela inovação, tecnologia, confiabilidade e compromisso com a satisfação dos clientes, expandindo nossa atuação no Brasil e Paraguai.</p>
+      </div>
+    </div>
+    <div class="valores-wrap">
+      <h3>VALORES</h3>
+      <div class="valores-pills">
+        <span>Qualidade em cada projeto</span>
+        <span>Precisão e excelência técnica</span>
+        <span>Ética e transparência</span>
+        <span>Compromisso com prazos</span>
+        <span>Segurança em todas as operações</span>
+        <span>Inovação e melhoria contínua</span>
+        <span>Respeito a clientes, colaboradores e parceiros</span>
+        <span>Responsabilidade e sustentabilidade</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTES ===== -->
+<section id="clientes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--lime-dark)">Confiança construída</div>
+      <h2 style="color:var(--navy-deep)">Empresas que já atendemos</h2>
+      <p>Grandes indústrias do agronegócio, alimentício e energético confiam na PIRES para operações críticas.</p>
+    </div>
+    <div class="clientes-grid">
+      <div class="client-plate"><span>Copacol</span></div>
+      <div class="client-plate"><span>Bellon Itaquerai</span></div>
+      <div class="client-plate"><span>Levo Umuarama</span></div>
+      <div class="client-plate"><span>Moageira Paraná</span></div>
+      <div class="client-plate"><span>Pedreira Itaipu</span></div>
+      <div class="client-plate"><span>JBS Alimentos<br>Campo Mourão</span></div>
+      <div class="client-plate"><span>JBS Caarapó</span></div>
+      <div class="client-plate"><span>JBS Santo Inácio</span></div>
+      <div class="client-plate"><span>Polpar Assunção</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato">
+  <div class="wrap contato-inner">
+    <div>
+      <div class="eyebrow" style="color:var(--lime)">Vamos conversar</div>
+      <h2>Pronto para o<br>próximo projeto</h2>
+      <p class="lead">Fale com nossa equipe técnica e solicite um orçamento para sua operação — atendemos demandas no Brasil e no Paraguai.</p>
+      <a href="https://wa.me/5555998205684" target="_blank" class="btn btn-primary">Solicitar orçamento via WhatsApp</a>
+    </div>
+    <div class="contact-list">
+      <div><div class="lbl">Telefone / WhatsApp</div><div class="val">+55 55 99820-5684</div></div>
+      <div><div class="lbl">E-mail</div><div class="val"><a href="mailto:lpirestornearia@hotmail.com">lpirestornearia@hotmail.com</a></div></div>
+      <div><div class="lbl">Endereço</div><div class="val">Campo Mourão — PR</div></div>
+      <div><div class="lbl">CNPJ</div><div class="val mono" style="font-size:14px;">53.704.018/0001-30</div></div>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <span>© PIRES MONTAGENS INDUSTRIAIS — TODOS OS DIREITOS RESERVADOS</span>
+    <span>TORNEARIA · SOLDAGEM · SOLDA EM ALUMÍNIO · METALÚRGICA · CORTE A LASER CNC</span>
+  </div>
+</section>
+
+<script>
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabBtns.forEach(b=>b.classList.remove('active'));
+      tabPanels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  // Gallery — img1.jpg ... img10.jpg (adicione os arquivos nesta mesma pasta)
+  const galleryGrid = document.getElementById('galleryGrid');
+  for(let i=1;i<=10;i++){
+    const item = document.createElement('div');
+    item.className = 'g-item';
+    const img = document.createElement('img');
+    img.src = `img${i}.jpg`;
+    img.alt = `Projeto PIRES ${i}`;
+    img.onerror = function(){
+      this.replaceWith(Object.assign(document.createElement('div'),{
+        className:'img-fallback', style:'height:100%',
+        innerHTML:`ADICIONE<br>img${i}.jpg`
+      }));
+    };
+    const label = document.createElement('div');
+    label.className = 'g-label';
+    label.textContent = `PROJETO ${String(i).padStart(2,'0')}`;
+    item.appendChild(img);
+    item.appendChild(label);
+    galleryGrid.appendChild(item);
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('section');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='translateY(0)'; io.unobserve(e.target); }
+    });
+  }, {threshold:0.08});
+  revealEls.forEach(el=>{
+    el.style.opacity=0; el.style.transform='translateY(24px)';
+    el.style.transition='opacity .7s ease, transform .7s ease';
+    io.observe(el);
+  });
+  document.querySelector('.hero').style.opacity=1;
+  document.querySelector('.hero').style.transform='translateY(0)';
+</script>
+
+</body>
+</html>
